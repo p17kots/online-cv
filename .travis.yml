@@ -8,7 +8,7 @@ before_install:
 install:
   - sudo apt-get install texlive-full
 script:
-  - pandoc https://p17kots.github.io/online-cv/ -f html-native_divs -o cv.pdf --latex-engine=xelatex
+  - pandoc https://p17kots.github.io/online-cv/ -f html-native_divs -o cv.pdf --pdf-engine=xelatex
 deploy:
   provider: pages
   skip_cleanup: true
