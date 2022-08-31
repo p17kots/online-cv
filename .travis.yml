@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+  - 2.7.1
+before_install:
+  - sudo apt-get install pandoc
+  - gem install asciidoctor
+  - sudo apt-get install lmodern
+install:
+  - sudo apt-get install texlive-full
+script:
+  - pandoc https://p17kots.github.io/online-cv/ -f html-native_divs -o cv.pdf --latex-engine=xelatex
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: main
+
+notifications:
+  email: false
+env:
+  global:
+    secure: MWYPgZVh0O8Ljan81+4kXkZKJWjSe/DJiU0wb5sMJbREPt487WFuMwBK9A2ZNEnaszb6fQ3XNHyoEoYgaX2rvUAsb3y5b6dCMloXCc6QftNxAnjzOUDB8sHDL2+gBv/1KsDH0X+VVUQlK4w4va5HXL7E+IedXa+KxTso8zE4qEaTQXZ+uaO+Kb0EjznnXUAP7QcYbk+35wA/cIl8VtweGYDd71jKvRkqSlY8O17MgE+gUkzeZKrpIHA0SMRCgPw6KPNesR0e7ZB/e8iZZ1h5V3BEQkc3XAwIu7H+QMK2QHw+q1Vm559ide4BF4TCebIoaJhacjKfP52XpYLU1skLIoX43rYVSmMBsaK/jB0ghUZez5YuJbOuEdk5JpBsqB/BEmpmwVqWFK5Tw8oGLMH7BCTRs9Qws+9PZzYkku4q/3zyCp4L3Tg0gn2p3mW696udRP31axP21pGOu/8RIcxBJu+CLk+ZuHoM9pYFnpT7OzgAWH5UyRjWqW/cP0c6isPsHO5WNkNC27Bin0VOEcPALLniUjqG/9hDY4zkp3nuNkMlM+h7Atu9u5DeVz2un5FQufWEXFNsR2KoNpK+uDWUUYemGgyBXw9oLNohXtgdSetPKXUsfvooZ/+W/gNxATXTpWAg4giubu1EGE2HAT3oskIBd04edQ3BhLGy/bLkw3c=    
